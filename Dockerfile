@@ -1,3 +1,8 @@
+FROM ubuntu:16.04
+ENV DEBIAN_FRONTEND noninteractive
+
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN groupadd -r nicehash \
   && useradd -r -g nicehash -m -d /home/nicehash/ -G sudo nicehash
 
@@ -14,7 +19,8 @@ RUN DEBIAN_FRONTEND=noninteractive; \
     cmake \
     git \
     libboost-all-dev \
-    wget autoconf automake libjansson-dev libgmp-dev libcurl4-openssl-dev libssl-dev libtool libncurses5-dev \
+    wget autoconf automake libjansson-dev libgmp-dev \
+    libcurl4-openssl-dev libssl-dev libtool libncurses5-dev \
   && rm -rf /var/lib/apt/lists/*
   # Get gosu
 RUN dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
